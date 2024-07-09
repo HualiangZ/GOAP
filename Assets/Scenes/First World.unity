@@ -466,6 +466,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tree-autumn-tall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b4a043e24716b0c40ac6555754cb670a, type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -557,6 +561,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cb75d62393ff1ad45bd1047acc706c70, type: 3}
       propertyPath: m_Name
       value: tree-tall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb75d62393ff1ad45bd1047acc706c70, type: 3}
+      propertyPath: m_TagString
+      value: Tree
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -650,6 +658,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tree-autumn-tall
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b4a043e24716b0c40ac6555754cb670a, type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -741,6 +753,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 758889a0a0ace5843a6fa1aea1f66647, type: 3}
       propertyPath: m_Name
       value: tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 758889a0a0ace5843a6fa1aea1f66647, type: 3}
+      propertyPath: m_TagString
+      value: Tree
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1344,6 +1360,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tree-autumn
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 350c22b7017e39e4482d7bf48cfed00d, type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1497,6 +1517,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cb75d62393ff1ad45bd1047acc706c70, type: 3}
       propertyPath: m_Name
       value: tree-tall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb75d62393ff1ad45bd1047acc706c70, type: 3}
+      propertyPath: m_TagString
+      value: Tree
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1743,6 +1767,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b4a043e24716b0c40ac6555754cb670a, type: 3}
       propertyPath: m_Name
       value: tree-autumn-tall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b4a043e24716b0c40ac6555754cb670a, type: 3}
+      propertyPath: m_TagString
+      value: Tree
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2084,6 +2112,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tree-tall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb75d62393ff1ad45bd1047acc706c70, type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2418,9 +2450,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 758889a0a0ace5843a6fa1aea1f66647, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 758889a0a0ace5843a6fa1aea1f66647, type: 3}
       propertyPath: m_Name
       value: tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 758889a0a0ace5843a6fa1aea1f66647, type: 3}
+      propertyPath: m_TagString
+      value: Tree
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2628,7 +2668,7 @@ GameObject:
   - component: {fileID: 977935328}
   - component: {fileID: 977935327}
   - component: {fileID: 977935326}
-  - component: {fileID: 977935325}
+  - component: {fileID: 977935330}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -2636,20 +2676,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &977935325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 977935324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c158eb44d1ba04b479e0497111d1fe45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actions: []
-  currentAction: {fileID: 0}
 --- !u!136 &977935326
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2738,6 +2764,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &977935330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977935324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d71c5995296f1c4b80f94a121bc01ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1105412926
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3140,6 +3178,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: aed8ec57326745746869308df55a95b5, type: 3}
   m_PrefabInstance: {fileID: 1537478314}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1738862363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1738862365}
+  - component: {fileID: 1738862364}
+  m_Layer: 0
+  m_Name: worldStates
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1738862364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738862363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a89d3ab0bdef2447a6c12ab3f38b411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1738862365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738862363}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3038439, y: -7.536686, z: -0.663126}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1775043739
 GameObject:
   m_ObjectHideFlags: 0
@@ -3466,7 +3548,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 06ab2817e5bbc7c46b3abd59257a9b17, type: 2}
     - target: {fileID: 919132149155446097, guid: 009933345bfc4904589c41df59933764, type: 3}
       propertyPath: m_Name
-      value: patch-grass-large
+      value: Pond
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 009933345bfc4904589c41df59933764, type: 3}
+      propertyPath: m_TagString
+      value: Pond
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3700,6 +3786,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 758889a0a0ace5843a6fa1aea1f66647, type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3840,3 +3930,4 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 1775043740}
   - {fileID: 977935329}
+  - {fileID: 1738862365}
