@@ -7,7 +7,10 @@ public class NPCScript : MonoBehaviour
 {
     public States NPCStates;
     public List<Actions> actions = new List<Actions>();
+    public Dictionary<Goals, int> goals = new Dictionary<Goals, int>();
+
     private Queue<Actions> actionQ;
+    private Goals currentGoal;
     public Actions currentAction;
     // Start is called before the first frame update
     void Start()
