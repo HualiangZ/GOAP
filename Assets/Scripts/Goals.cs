@@ -5,11 +5,11 @@ using UnityEngine;
 public class Goals
 {
 
-    public Dictionary<string, int> dict_startCondition;
+    public Dictionary<string, int> goal;
     public Goals(string s, int i) 
     {
-        dict_startCondition = new Dictionary<string, int>();
-        dict_startCondition.Add(s, i);
+        goal = new Dictionary<string, int>();
+        goal.Add(s, i);
     }
 
 }
