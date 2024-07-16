@@ -2,35 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goals : MonoBehaviour
+public class Goals
 {
 
-    public float priority = 0;
-    public State[] startCondition;
-
     public Dictionary<string, int> dict_startCondition;
-
-
-    public void Awake()
+    public Goals(string s, int i) 
     {
-        if (startCondition != null)
-        {
-            foreach (State s in startCondition)
-            {
-                dict_startCondition.Add(s.key, s.value);
-            }
-        }
+        dict_startCondition = new Dictionary<string, int>();
+        dict_startCondition.Add(s, i);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
