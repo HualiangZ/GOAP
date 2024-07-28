@@ -22,15 +22,14 @@ public class NPCScript : MonoBehaviour
             actions.Add(a);
         }
 
-
         NPCStates.AddState("Hunger", 100);
         NPCStates.AddState("Thirst", 100);
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

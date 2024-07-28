@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class WorldScript : MonoBehaviour
+public sealed class WorldScript : MonoBehaviour
 {
     public States worldStates;
     // Start is called before the first frame update
@@ -13,8 +13,8 @@ public class WorldScript : MonoBehaviour
         worldStates = new States();
         GetAllTrees();
         GetAllPond();
-        Debug.Log(worldStates.HasState("Pond"));
-        Debug.Log(worldStates.GetStateValue("Pond"));
+        //Debug.Log(worldStates.HasState("Pond"));
+        //Debug.Log(worldStates.GetStateValue("Pond"));
     }
 
     // Update is called once per frame
@@ -34,4 +34,8 @@ public class WorldScript : MonoBehaviour
         worldStates.AddState("Pond", pond.Length);
     }
 
+    public States GetWorldState()
+    {
+        return worldStates;
+    }
 }

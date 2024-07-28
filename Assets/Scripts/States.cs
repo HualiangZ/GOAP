@@ -17,6 +17,7 @@ public class States
     public States() 
     { 
         state = new Dictionary<string, int>();
+
     }
 
     public void AddState(string s, int i)
@@ -62,6 +63,11 @@ public class States
     public int GetStateValue(string s) 
     {
         return state[s];
+    }
+
+    public Dictionary<string, int> GetStates()
+    {
+        return state;
     }
 }
 
