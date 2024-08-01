@@ -2,23 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
 
 public class Actions : MonoBehaviour
 {
     public string actionName = "Action";
-    public float cost = 1;
+    public int cost = 1;
     public State[] preConditions;
-    public State[] effects;
+    public State[] afterEffects;
 
     public Transform target;
     private NavMeshAgent agent;
 
     public Dictionary<string, int> dict_preConditions;
-    public Dictionary<string, int> dict_effects;
+    public Dictionary<string, int> effect;
 
     public Actions()
     {
-        dict_effects = new Dictionary<string, int>();
+        effect = new Dictionary<string, int>();
         dict_preConditions = new Dictionary<string, int>();
     }
 
@@ -35,11 +36,11 @@ public class Actions : MonoBehaviour
             }
         }
 
-        if(effects != null)
+        if(afterEffects != null)
         {
-            foreach(State s in effects)
+            foreach(State s in afterEffects)
             {
-                dict_effects.Add(s.key, s.value);
+                effect.Add(s.key, s.value);
             }
         }
     }
@@ -59,6 +60,18 @@ public class Actions : MonoBehaviour
     //edit as needed when inhert
     public bool CanBeAchieved()
     {
+        return true;
+    }
+
+    public bool AchievableGiven(Dictionary<string, int > c)
+    {
+        foreach(KeyValuePair<string, int> p in c)
+        {
+            if (!c.ContainsKey(p.Key))
+            {
+                return false;
+            }
+        }
         return true;
     }
 

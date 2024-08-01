@@ -81,4 +81,68 @@ public class Planner : MonoBehaviour
         Debug.Log("plan created");
         return queue;
     }
+
+    private bool BuildGraph(Node parent, List<Node> leaves, List<Actions> useableActions, Dictionary<string, int> goal)
+    {
+        bool foundGraph = false;
+
+        foreach(Actions a in  useableActions)
+        {
+            if (a.AchievableGiven(parent.state))
+            {
+                Dictionary<string, int> currentState = new Dictionary<string, int>(parent.state);
+                foreach(KeyValuePair<string, int> eff in a.effect)
+                {
+                    if (!currentState.ContainsKey(eff.Key))
+                    {
+                        currentState.Add(eff.Key, eff.Value);
+                    }
+                }
+
+                Node node = new Node(parent, parent.cost + a.cost, currentState, a);
+                if(GoalAchieved(goal, currentState))
+                {
+                    leaves.Add(node);
+                    foundGraph = true;
+                }
+                else
+                {
+                    List<Actions> subset = ActionsSubset(useableActions, a);
+                    bool found = BuildGraph(node, leaves, subset, goal);
+                    if (found)
+                    {
+                        foundGraph = true;
+                    }
+                }
+
+            }
+        }
+        return foundGraph;
+    }
+
+    private bool GoalAchieved(Dictionary<string, int> goal, Dictionary<string, int> state)
+    {
+        foreach (KeyValuePair<string, int> g in goal)
+        {
+            if (!state.ContainsKey(g.Key))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private List<Actions> ActionsSubset(List<Actions> actions, Actions removeA)
+    {
+        List<Actions> subset = new List<Actions>();
+        foreach(Actions a in actions)
+        {
+            if (!a.Equals(removeA))
+            {
+                subset.Add(a);
+            }
+        }
+        return subset;
+    }
+
 }
