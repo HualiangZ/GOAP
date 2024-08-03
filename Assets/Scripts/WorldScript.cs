@@ -2,25 +2,27 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor;
 using UnityEngine;
 
-public class WorldScript : MonoBehaviour
+public sealed class WorldScript
 {
-    public States worldStates;
-    // Start is called before the first frame update
-    void Start()
+    private static States worldStates = new States();
+    private static readonly WorldScript worldScript;
+
+    static WorldScript()
     {
-        worldStates = new States();
+        worldScript = new WorldScript();
+    }
+    private WorldScript()
+    {
         GetAllTrees();
         GetAllPond();
-        //Debug.Log(worldStates.HasState("Pond"));
-        //Debug.Log(worldStates.GetStateValue("Pond"));
     }
 
-    // Update is called once per frame
-    void Update()
+    public static WorldScript Instance
     {
-        
+        get { return worldScript; }
     }
 
     private void GetAllTrees()

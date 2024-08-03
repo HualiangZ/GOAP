@@ -18,9 +18,8 @@ public class Node
         this.action = action;
     }
 }
-public class Planner : MonoBehaviour
+public class Planner
 {
-    public WorldScript world;
     public Queue<Actions> plan(List<Actions> actions, Dictionary<string, int> goal, State state)
     {
         List<Actions> useableAction = new List<Actions>();
@@ -34,7 +33,7 @@ public class Planner : MonoBehaviour
         }
 
         List<Node> leaves = new List<Node>();
-        Node start = new Node(null, 0, world.GetWorldState().GetStates(), null);
+        Node start = new Node(null, 0, WorldScript.Instance.GetWorldState().GetStates(), null);
 
         bool success = BuildGraph(start, leaves, useableAction, goal);
 

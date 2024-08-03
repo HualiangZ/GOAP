@@ -4,15 +4,18 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
 
-public class Actions : MonoBehaviour
+public abstract class Actions : MonoBehaviour
 {
     public string actionName = "Action";
     public int cost = 1;
     public State[] preConditions;
     public State[] afterEffects;
+    public bool isRunning = false;
+    public int waitDuration = 0;
 
-    public Transform target;
-    private NavMeshAgent agent;
+    public string targetTag;
+    public GameObject target;
+    public NavMeshAgent agent;
 
     public Dictionary<string, int> dict_preConditions;
     public Dictionary<string, int> effect;
@@ -74,5 +77,8 @@ public class Actions : MonoBehaviour
         }
         return true;
     }
+
+    public abstract bool PrePreform();
+    public abstract bool PostPreform();
 
 }
