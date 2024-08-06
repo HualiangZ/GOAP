@@ -68,7 +68,7 @@ public abstract class Actions : MonoBehaviour
 
     public bool AchievableGiven(Dictionary<string, int > c)
     {
-        foreach(KeyValuePair<string, int> p in c)
+        foreach(KeyValuePair<string, int> p in dict_preConditions)
         {
             if (!c.ContainsKey(p.Key))
             {

@@ -78,6 +78,10 @@ public class Planner
         }
 
         Debug.Log("plan created");
+        foreach(Actions a in queue)
+        {
+            Debug.Log(a.actionName);
+        }
         return queue;
     }
 

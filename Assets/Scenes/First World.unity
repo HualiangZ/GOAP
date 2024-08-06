@@ -2834,7 +2834,7 @@ Transform:
   m_GameObject: {fileID: 977935324}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8796047, y: 2.449, z: -9.661578}
+  m_LocalPosition: {x: 4.29, y: 2.449, z: -9.661578}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2866,9 +2866,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383b35c7e1aabd3469f91d58bc692bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: Action
+  actionName: pond
   cost: 1
-  preConditions: []
+  preConditions:
+  - key: Apple
+    value: 0
   afterEffects:
   - key: Fish
     value: 0
@@ -2911,7 +2913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd2cb95740f33d4d8d0faf5d174cbb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: Action
+  actionName: apple
   cost: 1
   preConditions: []
   afterEffects:

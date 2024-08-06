@@ -32,8 +32,8 @@ public class NPCScript : MonoBehaviour
         Goals g = new Goals("Fish", 1, false);
         goals.Add(g, 3);
 
-        Goals g1 = new Goals("Apple", 1, false);
-        goals.Add(g1, 3);
+/*        Goals g1 = new Goals("Apple", 1, false);
+        goals.Add(g1, 3);*/
 
     }
 
@@ -78,13 +78,13 @@ public class NPCScript : MonoBehaviour
             }
             else
             {
-                if (goals.ContainsKey(currentGoal))
+/*                if (goals.ContainsKey(currentGoal))
                 {
                     if (goals[currentGoal] != 0)
                     {
                         goals[currentGoal] -= 1;
                     }                   
-                }
+                }*/
             }
             planner = null;
         }
