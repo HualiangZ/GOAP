@@ -2867,7 +2867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionName: Action
-  cost: 5
+  cost: 1
   preConditions: []
   afterEffects:
   - key: Fish

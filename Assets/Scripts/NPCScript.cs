@@ -29,11 +29,11 @@ public class NPCScript : MonoBehaviour
         NPCStates.AddState("Hunger", 100);
         NPCStates.AddState("Thirst", 100);
 
-        Goals g = new Goals("Fish", 1);
-        goals.Add(g, 1);
+        Goals g = new Goals("Fish", 1, false);
+        goals.Add(g, 3);
 
-        Goals g1 = new Goals("Apple", 1);
-        goals.Add(g1, 1);
+        Goals g1 = new Goals("Apple", 1, false);
+        goals.Add(g1, 3);
 
     }
 
@@ -72,6 +72,20 @@ public class NPCScript : MonoBehaviour
 
         if(actionQ != null && actionQ.Count == 0)
         {
+            if (currentGoal.canBeRemoved)
+            {
+                goals.Remove(currentGoal);
+            }
+            else
+            {
+                if (goals.ContainsKey(currentGoal))
+                {
+                    if (goals[currentGoal] != 0)
+                    {
+                        goals[currentGoal] -= 1;
+                    }                   
+                }
+            }
             planner = null;
         }
 
