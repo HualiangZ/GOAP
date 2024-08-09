@@ -29,7 +29,7 @@ public class NPCScript : MonoBehaviour
         NPCStates.AddState("Hunger", 100);
         NPCStates.AddState("Thirst", 100);
 
-        Goals g = new Goals("Fish", 1, false);
+        Goals g = new Goals("Fish", 1, true);
         goals.Add(g, 3);
 
 /*        Goals g1 = new Goals("Apple", 1, false);
@@ -42,7 +42,8 @@ public class NPCScript : MonoBehaviour
     {
         if(currentAction != null && currentAction.isRunning)
         {
-            if(currentAction.agent.hasPath && currentAction.agent.remainingDistance < 1f)
+            float distance = Vector3.Distance(currentAction.target.transform.position, this.transform.position);
+            if(currentAction.agent.hasPath && distance < 2f)
             {
                 if (!ran)
                 {

@@ -2741,10 +2741,12 @@ GameObject:
   - component: {fileID: 977935328}
   - component: {fileID: 977935327}
   - component: {fileID: 977935326}
+  - component: {fileID: 977935332}
   - component: {fileID: 977935330}
   - component: {fileID: 977935331}
-  - component: {fileID: 977935332}
   - component: {fileID: 977935333}
+  - component: {fileID: 977935334}
+  - component: {fileID: 977935335}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -2834,7 +2836,7 @@ Transform:
   m_GameObject: {fileID: 977935324}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.29, y: 2.449, z: -9.661578}
+  m_LocalPosition: {x: 4.46, y: 2.449, z: -9.661578}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2869,7 +2871,7 @@ MonoBehaviour:
   actionName: pond
   cost: 1
   preConditions:
-  - key: Apple
+  - key: Tree
     value: 0
   afterEffects:
   - key: Fish
@@ -2923,6 +2925,56 @@ MonoBehaviour:
   waitDuration: 0
   targetTag: 
   target: {fileID: 757223208}
+  agent: {fileID: 0}
+--- !u!114 &977935334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977935324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4780571148f46304e92f10f38c43e4c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Autumn Tree
+  cost: 2
+  preConditions:
+  - key: Apple
+    value: 0
+  afterEffects:
+  - key: Tree
+    value: 0
+  isRunning: 0
+  waitDuration: 0
+  targetTag: 
+  target: {fileID: 645950051}
+  agent: {fileID: 0}
+--- !u!114 &977935335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977935324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3683264341eced4a978924e63c39843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Tall Tree
+  cost: 1
+  preConditions:
+  - key: Apple
+    value: 0
+  afterEffects:
+  - key: Tree
+    value: 0
+  isRunning: 0
+  waitDuration: 0
+  targetTag: 
+  target: {fileID: 544049496}
   agent: {fileID: 0}
 --- !u!1001 &1105412926
 PrefabInstance:
@@ -3782,7 +3834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de8ebd6e7648d56439f6508967a3116e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.0149202
+      value: 5.73
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de8ebd6e7648d56439f6508967a3116e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3790,7 +3842,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de8ebd6e7648d56439f6508967a3116e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.8047466
+      value: -2.63
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de8ebd6e7648d56439f6508967a3116e, type: 3}
       propertyPath: m_LocalRotation.w

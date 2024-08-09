@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class Node
@@ -43,6 +44,21 @@ public class Planner
             return null;
         }
 
+
+        Debug.Log(leaves.Count);
+
+        foreach (Node leaf in leaves)
+        {
+            Node node = leaf;
+            while (node != null)
+            {
+                if (node.action != null)
+                    Debug.Log(node.action.actionName + ", " + node.cost);
+                node = node.parent;
+            }
+            Debug.Log("=========");
+        }
+
         Node cheapest = null;
 
         foreach(Node leaf in leaves)
@@ -80,7 +96,7 @@ public class Planner
         Debug.Log("plan created");
         foreach(Actions a in queue)
         {
-            Debug.Log(a.actionName);
+            //Debug.Log(a.actionName);
         }
         return queue;
     }

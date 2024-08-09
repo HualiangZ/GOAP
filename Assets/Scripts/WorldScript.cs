@@ -16,8 +16,8 @@ public sealed class WorldScript
     }
     private WorldScript()
     {
-        GetAllTrees();
-        GetAllPond();
+        //GetAllTrees();
+        //GetAllPond();
     }
 
     public static WorldScript Instance
