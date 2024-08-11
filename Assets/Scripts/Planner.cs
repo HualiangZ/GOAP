@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
+using Unity.Collections;
 using UnityEngine;
 
 public class Node
@@ -45,56 +47,51 @@ public class Planner
         }
 
 
-        Debug.Log(leaves.Count);
 
-        foreach (Node leaf in leaves)
-        {
-            Node node = leaf;
-            while (node != null)
-            {
-                if (node.action != null)
-                    Debug.Log(node.action.actionName + ", " + node.cost);
-                node = node.parent;
-            }
-            Debug.Log("=========");
-        }
-
-        Node cheapest = null;
+        List<List<Actions>> tree = new List<List<Actions>>();
 
         foreach(Node leaf in leaves)
         {
-            if(cheapest == null)
+            List<Actions> result = new List<Actions>();
+            Node n = leaf;
+            while (n != null)
             {
-                cheapest = leaf;
-            }
-            else
-            {
-                if(leaf.cost < cheapest.cost)
+                if (n.action != null)
                 {
-                    cheapest = leaf;
+                    result.Insert(0, n.action);
                 }
+                n = n.parent;
             }
+            tree.Add(result);
         }
 
-        List<Actions> result = new List<Actions>();
-        Node n = cheapest;
-        while(n != null)
+        List<Actions> cheapest = Dijkstra(tree);
+
+
+
+        /* ==== testing code ==== */
+/*        Debug.Log(tree.Count);
+
+        foreach (List<Actions> l in tree)
         {
-            if (n.action != null)
+            foreach(Actions a in l)
             {
-                result.Insert(0, n.action);
+                Debug.Log(a.actionName);
             }
-            n = n.parent;
-        }
+            Debug.Log("============");
+        }*/
+        /* ================== */
 
         Queue<Actions> queue = new Queue<Actions>();
-        foreach(Actions a in result)
+
+        foreach (Actions a in cheapest)
         {
+            Debug.Log(a.actionName + ", " + a.cost);  
             queue.Enqueue(a);
         }
 
         Debug.Log("plan created");
-        foreach(Actions a in queue)
+        foreach (Actions a in queue)
         {
             //Debug.Log(a.actionName);
         }
@@ -162,6 +159,34 @@ public class Planner
             }
         }
         return subset;
+    }
+
+    private List<Actions> Dijkstra(List<List<Actions>> tree)
+    {
+        Debug.Log(tree.Count);
+
+        List<Actions> cheapest = null;
+        float cheapestCost = Mathf.Infinity;
+        foreach (List<Actions> l in tree)
+        {
+            Debug.Log("================");
+            float cost = 0;
+            foreach (Actions a in l)
+            {
+                Debug.Log(a.actionName + ", " + a.cost);
+                cost += a.cost;
+            }
+            Debug.Log(cost);
+            Debug.Log("================");
+            if (cost < cheapestCost)
+            {
+                Debug.Log("cheaper");
+                cheapestCost = cost;
+                cheapest = l;
+            }
+        }
+
+        return cheapest;
     }
 
 }
