@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using Unity.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Node
@@ -90,7 +91,7 @@ public class Planner
             queue.Enqueue(a);
         }
 
-        Debug.Log("plan created");
+        //Debug.Log("plan created");
         foreach (Actions a in queue)
         {
             //Debug.Log(a.actionName);
@@ -163,24 +164,24 @@ public class Planner
 
     private List<Actions> Dijkstra(List<List<Actions>> tree)
     {
-        Debug.Log(tree.Count);
+        //Debug.Log(tree.Count);
 
         List<Actions> cheapest = null;
         float cheapestCost = Mathf.Infinity;
         foreach (List<Actions> l in tree)
         {
-            Debug.Log("================");
+            //Debug.Log("================");
             float cost = 0;
             foreach (Actions a in l)
             {
-                Debug.Log(a.actionName + ", " + a.cost);
+                //Debug.Log(a.actionName + ", " + a.cost);
                 cost += a.cost;
             }
-            Debug.Log(cost);
-            Debug.Log("================");
+            //Debug.Log(cost);
+            //Debug.Log("================");
             if (cost < cheapestCost)
             {
-                Debug.Log("cheaper");
+                //Debug.Log("cheaper");
                 cheapestCost = cost;
                 cheapest = l;
             }
@@ -189,4 +190,14 @@ public class Planner
         return cheapest;
     }
 
+    private List<Actions> AStar()
+    {
+        List<Actions> cheapest = null;
+        Dictionary<Actions, int> OPEN = new Dictionary<Actions, int>();
+        Dictionary<Actions, int> CLOSED = new Dictionary<Actions, int>();
+
+
+
+        return cheapest;
+    }
 }
