@@ -214,14 +214,6 @@ public class Planner
                     if (cost > currentCheapest)
                     {
                         Debug.Log("Break");
-                        //Debug.Log(currentCheapest + ", " + cost);
-                        for (int k = j; k < tree[i].Count; k++)
-                        {
-                            List<int> items = new List<int>();
-                            items.Add(i);
-                            items.Add(k);
-                            CLOSED.Add(items);
-                        }
                         break;
                     }
                     CLOSED.Add(item);
