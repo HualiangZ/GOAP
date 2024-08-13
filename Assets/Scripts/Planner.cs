@@ -66,7 +66,7 @@ public class Planner
             tree.Add(result);
         }
 
-        List<Actions> cheapest = Dijkstra(tree);
+        List<Actions> cheapest = AStar(tree);
 
 
 
@@ -75,7 +75,7 @@ public class Planner
 
         foreach (List<Actions> l in tree)
         {
-            foreach(Actions a in l)
+            foreach (Actions a in l)
             {
                 Debug.Log(a.actionName);
             }
@@ -165,7 +165,6 @@ public class Planner
     private List<Actions> Dijkstra(List<List<Actions>> tree)
     {
         //Debug.Log(tree.Count);
-
         List<Actions> cheapest = null;
         float cheapestCost = Mathf.Infinity;
         foreach (List<Actions> l in tree)
@@ -190,12 +189,60 @@ public class Planner
         return cheapest;
     }
 
-    private List<Actions> AStar()
+    private List<Actions> AStar(List<List<Actions>> tree)
     {
         List<Actions> cheapest = null;
-        Dictionary<Actions, int> OPEN = new Dictionary<Actions, int>();
-        Dictionary<Actions, int> CLOSED = new Dictionary<Actions, int>();
+        List<List<int>> CLOSED = new List<List<int>>();
+        float currentCheapest = Mathf.Infinity;
 
+        for(int i=0; i < tree.Count; i++)
+        {
+            float cost = 0;
+            for (int j=0; j< tree[i].Count; j++)
+            {
+                List<int> item = new List<int>();
+                item.Add(i);
+                item.Add(j);
+                //Debug.Log(i + "," +j);
+                if (!CLOSED.Contains(item))
+                {
+                    List<Actions> node = tree[i];
+                    float h = Mathf.Sqrt((tree[i].Count - j ) ^ 2 + (tree.Count - i ) ^ 2);
+                    cost += node[j].cost + h;
+
+
+                    if (cost > currentCheapest)
+                    {
+                        Debug.Log("Break");
+                        //Debug.Log(currentCheapest + ", " + cost);
+                        for (int k = j; k < tree[i].Count; k++)
+                        {
+                            List<int> items = new List<int>();
+                            items.Add(i);
+                            items.Add(k);
+                            CLOSED.Add(items);
+                        }
+                        break;
+                    }
+                    CLOSED.Add(item);
+                }
+                else
+                {
+                    Debug.Log("skipped");
+                }
+                
+            }
+
+            //Debug.Log(i + ", " + cost);
+
+            if (cost < currentCheapest)
+            {
+                Debug.Log("cheapest: " + currentCheapest + ", " + cost + ", " + i);
+                currentCheapest = cost;
+                cheapest = tree[i];
+            }
+        }
+        Debug.Log(currentCheapest);
 
 
         return cheapest;
