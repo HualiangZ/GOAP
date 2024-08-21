@@ -239,4 +239,15 @@ public class Planner
 
         return cheapest;
     }
+
+    private List<Actions> DStar(List<List<Actions>> tree)
+    {
+        List<Actions> cheapest = null;
+        List<List<int>> CLOSED = new List<List<int>>();
+        float currentCheapest = Mathf.Infinity;
+        
+
+
+        return cheapest;
+    }
 }
