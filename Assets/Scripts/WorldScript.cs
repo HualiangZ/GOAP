@@ -36,6 +36,11 @@ public sealed class WorldScript
         worldStates.AddState("Pond", pond.Length);
     }
 
+    public void AddWorldStates(string s, int i)
+    {
+        worldStates.AddState(s, i);
+    }
+
     public States GetWorldState()
     {
         return worldStates;

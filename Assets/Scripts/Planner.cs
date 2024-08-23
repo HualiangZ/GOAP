@@ -87,7 +87,7 @@ public class Planner
 
         foreach (Actions a in cheapest)
         {
-            Debug.Log(a.actionName + ", " + a.cost);  
+            //Debug.Log(a.actionName + ", " + a.cost);  
             queue.Enqueue(a);
         }
 
@@ -213,14 +213,14 @@ public class Planner
 
                     if (cost > currentCheapest)
                     {
-                        Debug.Log("Break");
+                        //Debug.Log("Break");
                         break;
                     }
                     CLOSED.Add(item);
                 }
                 else
                 {
-                    Debug.Log("skipped");
+                    //Debug.Log("skipped");
                 }
                 
             }
@@ -229,12 +229,12 @@ public class Planner
 
             if (cost < currentCheapest)
             {
-                Debug.Log("cheapest: " + currentCheapest + ", " + cost + ", " + i);
+                //Debug.Log("cheapest: " + currentCheapest + ", " + cost + ", " + i);
                 currentCheapest = cost;
                 cheapest = tree[i];
             }
         }
-        Debug.Log(currentCheapest);
+        //Debug.Log(currentCheapest);
 
 
         return cheapest;

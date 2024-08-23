@@ -10,11 +10,16 @@ public class NPCScript : MonoBehaviour
     public List<Actions> actions = new List<Actions>();
     public Dictionary<Goals, int> goals = new Dictionary<Goals, int>();
 
+    private bool rain = false;
+
     private Queue<Actions> actionQ;
     private Goals currentGoal;
     public Actions currentAction;
     private Planner planner;
     bool ran = false;
+
+    Goals g1 = new Goals("Fish", 1, true);
+    Goals g2 = new Goals("Dry", 1, true);
     // Start is called before the first frame update
     void Start()
     {
@@ -27,13 +32,20 @@ public class NPCScript : MonoBehaviour
         }
 
         NPCStates.AddState("Hunger", 100);
+        InvokeRepeating("DecreaseHunger", 1.0f, 1.0f);
         NPCStates.AddState("Thirst", 100);
+        InvokeRepeating("DecreaseThirst", 1.0f, 1.0f);
+        NPCStates.AddState("Dry", 100);
 
-        Goals g = new Goals("Fish", 1, true);
+        Goals g = new Goals("Shelter", 1, true);
+
         goals.Add(g, 3);
+        goals.Add(g1, 2);
+        goals.Add(g2, 1);
 
-/*        Goals g1 = new Goals("Apple", 1, false);
-        goals.Add(g1, 3);*/
+    }
+    private void Update()
+    {
 
     }
 
@@ -79,13 +91,13 @@ public class NPCScript : MonoBehaviour
             }
             else
             {
-/*                if (goals.ContainsKey(currentGoal))
+                if (goals.ContainsKey(currentGoal))
                 {
                     if (goals[currentGoal] != 0)
                     {
                         goals[currentGoal] -= 1;
-                    }                   
-                }*/
+                    }
+                }
             }
             planner = null;
         }
@@ -109,6 +121,26 @@ public class NPCScript : MonoBehaviour
             {
                 actionQ = null;
             }
+        }
+
+    }
+
+    private void DecreaseHunger()
+    {
+        if (NPCStates.GetStateValue("Hunger") > 0)
+        {
+            NPCStates.ModifyStates("Hunger", -1);
+            Debug.Log(NPCStates.GetStateValue("Hunger"));
+        }
+
+    }
+
+    private void DecreaseThirst()
+    {
+        if (NPCStates.GetStateValue("Thirst") > 0)
+        {
+            NPCStates.ModifyStates("Thirst", -1);
+            Debug.Log(NPCStates.GetStateValue("Thirst"));
         }
 
     }
