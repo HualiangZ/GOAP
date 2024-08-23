@@ -2813,6 +2813,7 @@ GameObject:
   - component: {fileID: 977935333}
   - component: {fileID: 977935334}
   - component: {fileID: 977935335}
+  - component: {fileID: 977935336}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -3038,9 +3039,34 @@ MonoBehaviour:
   isRunning: 0
   waitDuration: 0
   targetTag: 
-  target: {fileID: 0}
+  target: {fileID: 1143959581}
   agent: {fileID: 0}
-  shelter: {fileID: 919132149155446097, guid: e4f22cc08618f07439f1557ba65204a8, type: 3}
+  shelter: {fileID: 1143959581}
+--- !u!114 &977935336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977935324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d688deb07f2c7104bb095d941c677981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Action
+  cost: 1
+  preConditions:
+  - key: Shelter
+    value: 0
+  afterEffects:
+  - key: Dry
+    value: 0
+  isRunning: 0
+  waitDuration: 0
+  targetTag: 
+  target: {fileID: 1143959581}
+  agent: {fileID: 0}
 --- !u!1001 &1105412926
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3133,6 +3159,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -9101821063835543346, guid: 79fd39fd96bc2c446ad39aa6045a1534, type: 3}
+--- !u!1 &1143959581 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e4f22cc08618f07439f1557ba65204a8, type: 3}
+  m_PrefabInstance: {fileID: 789434385}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1265587838
 PrefabInstance:
   m_ObjectHideFlags: 0
