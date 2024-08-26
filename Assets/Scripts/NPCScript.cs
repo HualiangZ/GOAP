@@ -12,6 +12,7 @@ public class NPCScript : MonoBehaviour
     public List<Actions> actions = new List<Actions>();
     public Dictionary<Goals, int> goals = new Dictionary<Goals, int>();
     public GameObject waitingArea;
+    public GameObject shelter;
     public bool rain;
 
     private Queue<Actions> actionQ;
@@ -23,7 +24,7 @@ public class NPCScript : MonoBehaviour
 
     Goals g1 = new Goals("Fish", 1, true);
     Goals g2 = new Goals("Apple", 1, true);
-    Goals g = new Goals("Shelter", 1, true);
+    Goals g = new Goals("Dry", 1, true);
     // Start is called before the first frame update
     void Start()
     {
@@ -35,18 +36,18 @@ public class NPCScript : MonoBehaviour
         {
             actions.Add(a);
         }
-
         NPCStates.AddState("Hunger", 55);
         InvokeRepeating("DecreaseHunger", 1.0f, 1.0f);
         NPCStates.AddState("Thirst", 100);
         InvokeRepeating("DecreaseThirst", 1.0f, 1.0f);
-        NPCStates.AddState("Dry", 100);
+        NPCStates.AddState("Dry", 55);
         InvokeRepeating("DecreaseDry", 1.0f, 1.0f);
-
+        Invoke("StartRain", 10f);
+        Invoke("StopRain", 300f);
     }
     private void Update()
     {
-
+        
         if(goals.Count == 0)
         {
             agent.SetDestination(waitingArea.transform.position);
@@ -59,7 +60,7 @@ public class NPCScript : MonoBehaviour
         if(currentAction != null && currentAction.isRunning)
         {
             float distance = Vector3.Distance(currentAction.target.transform.position, this.transform.position);
-            if(currentAction.agent.hasPath && distance < 1f)
+            if(distance < 1f)
             {
                 if (!ran)
                 {
@@ -189,8 +190,22 @@ public class NPCScript : MonoBehaviour
         {
             if (NPCStates.GetStateValue("Dry") > 0)
             {
-                NPCStates.ModifyStates("Dry", -1);
-                //Debug.Log(NPCStates.GetStateValue("Thirst"));
+                NPCStates.ModifyStates("Dry", -2);
+                
+            }
+            float distance = Vector3.Distance(shelter.transform.position, this.transform.position);
+            if (distance <= 1f && shelter.activeSelf)
+            {
+                NPCStates.ModifyStates("Dry", 6);
+                try
+                {
+                    goals[g] -= 5;
+                }
+                catch
+                {
+
+                }
+                
             }
             if (NPCStates.GetStateValue("Dry") < 50)
             {

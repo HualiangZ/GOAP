@@ -447,10 +447,10 @@ RectTransform:
   - {fileID: 1304013784}
   m_Father: {fileID: 118071272}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.88563406}
-  m_AnchorMax: {x: 0, y: 0.88563406}
-  m_AnchoredPosition: {x: 53.01178, y: -0.36099243}
-  m_SizeDelta: {x: 106.0236, y: 46.241}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 53.012, y: -69.361}
+  m_SizeDelta: {x: 106.0236, y: 46.240997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &107969066
 MonoBehaviour:
@@ -3585,6 +3585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions: []
   waitingArea: {fileID: 1940137801}
+  shelter: {fileID: 1143959581}
   rain: 0
   currentAction: {fileID: 0}
   agent: {fileID: 0}
@@ -3702,7 +3703,7 @@ MonoBehaviour:
   - key: Shelter
     value: 1
   isRunning: 0
-  waitDuration: 0
+  waitDuration: 3
   targetTag: 
   target: {fileID: 1143959581}
   agent: {fileID: 0}
@@ -3728,7 +3729,7 @@ MonoBehaviour:
   - key: Dry
     value: 0
   isRunning: 0
-  waitDuration: 0
+  waitDuration: 3
   targetTag: 
   target: {fileID: 1143959581}
   agent: {fileID: 0}
