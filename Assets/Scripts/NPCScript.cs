@@ -3,50 +3,54 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using System.Linq;
 using UnityEngine;
+using UnityEditor;
+using UnityEngine.AI;
 
 public class NPCScript : MonoBehaviour
 {
     public States NPCStates;
     public List<Actions> actions = new List<Actions>();
     public Dictionary<Goals, int> goals = new Dictionary<Goals, int>();
-
-    private bool rain = false;
+    public GameObject waitingArea;
+    public bool rain;
 
     private Queue<Actions> actionQ;
     private Goals currentGoal;
     public Actions currentAction;
+    public NavMeshAgent agent;
     private Planner planner;
     bool ran = false;
 
     Goals g1 = new Goals("Fish", 1, true);
-    Goals g2 = new Goals("Dry", 1, true);
+    Goals g2 = new Goals("Apple", 1, true);
+    Goals g = new Goals("Shelter", 1, true);
     // Start is called before the first frame update
     void Start()
     {
-
+        rain = false;
         NPCStates = new States();
+        agent = GetComponent<NavMeshAgent>();
         Actions[] act = GetComponents<Actions>();
         foreach (Actions a in act) 
         {
             actions.Add(a);
         }
 
-        NPCStates.AddState("Hunger", 100);
+        NPCStates.AddState("Hunger", 55);
         InvokeRepeating("DecreaseHunger", 1.0f, 1.0f);
         NPCStates.AddState("Thirst", 100);
         InvokeRepeating("DecreaseThirst", 1.0f, 1.0f);
         NPCStates.AddState("Dry", 100);
-
-        Goals g = new Goals("Shelter", 1, true);
-
-        goals.Add(g, 3);
-        goals.Add(g1, 2);
-        goals.Add(g2, 1);
+        InvokeRepeating("DecreaseDry", 1.0f, 1.0f);
 
     }
     private void Update()
     {
 
+        if(goals.Count == 0)
+        {
+            agent.SetDestination(waitingArea.transform.position);
+        }
     }
 
     // Update is called once per frame
@@ -55,7 +59,7 @@ public class NPCScript : MonoBehaviour
         if(currentAction != null && currentAction.isRunning)
         {
             float distance = Vector3.Distance(currentAction.target.transform.position, this.transform.position);
-            if(currentAction.agent.hasPath && distance < 2f)
+            if(currentAction.agent.hasPath && distance < 1f)
             {
                 if (!ran)
                 {
@@ -130,7 +134,19 @@ public class NPCScript : MonoBehaviour
         if (NPCStates.GetStateValue("Hunger") > 0)
         {
             NPCStates.ModifyStates("Hunger", -1);
-            Debug.Log(NPCStates.GetStateValue("Hunger"));
+            //Debug.Log(NPCStates.GetStateValue("Hunger"));
+        }
+        if (NPCStates.GetStateValue("Hunger") < 50)
+        {
+            if (goals.ContainsKey(g2))
+            {
+                goals[g2] += 1;
+            }
+            else
+            {
+                goals.Add(g2, 1);
+            }
+             
         }
 
     }
@@ -140,9 +156,56 @@ public class NPCScript : MonoBehaviour
         if (NPCStates.GetStateValue("Thirst") > 0)
         {
             NPCStates.ModifyStates("Thirst", -1);
-            Debug.Log(NPCStates.GetStateValue("Thirst"));
+            //Debug.Log(NPCStates.GetStateValue("Thirst"));
+        }
+        if (NPCStates.GetStateValue("Thirst") < 50)
+        {
+            if (goals.ContainsKey(g1))
+            {
+                 goals[g1] += 1;
+            }
+            else
+            {
+                goals.Add(g1, 1);  
+            }
+           
         }
 
+    }
+
+    void StartRain()
+    {
+        rain = true;
+    }
+
+    private void StopRain()
+    {
+        rain = false;
+    }
+
+    private void DecreaseDry()
+    {
+        if(rain)
+        {
+            if (NPCStates.GetStateValue("Dry") > 0)
+            {
+                NPCStates.ModifyStates("Dry", -1);
+                //Debug.Log(NPCStates.GetStateValue("Thirst"));
+            }
+            if (NPCStates.GetStateValue("Dry") < 50)
+            {
+                if (goals.ContainsKey(g))
+                {
+                    goals[g] += 1;
+                }
+                else
+                {
+                    goals.Add(g, 1);
+                }
+
+            }
+        }
+        
     }
 
     void IsActionComplete()

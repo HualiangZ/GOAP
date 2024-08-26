@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class MoveToPond : Actions
 {
+    NPCScript NPC;
+    public void Start()
+    {
+        NPC = GetComponent<NPCScript>();
+    }
     public override bool PrePreform()
     {
         return true;
@@ -11,6 +16,7 @@ public class MoveToPond : Actions
 
     public override bool PostPreform()
     {
+        NPC.NPCStates.ModifyStates("Thirst", 30);
         return true;
     }
 
