@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using Unity.Collections;
@@ -24,6 +25,7 @@ public class Node
 }
 public class Planner
 {
+    
     public Queue<Actions> plan(List<Actions> actions, Dictionary<string, int> goal, State state)
     {
         List<Actions> useableAction = new List<Actions>();
@@ -66,21 +68,22 @@ public class Planner
             tree.Add(result);
         }
 
-        List<Actions> cheapest = AStar(tree);
-
+        var temp = Time.time;
+        List<Actions> cheapest = Dijkstra(tree);
+        Debug.Log("Time for MyExpensiveFunction: " + (Time.realtimeSinceStartup - temp).ToString("f6"));
 
 
         /* ==== testing code ==== */
-/*        Debug.Log(tree.Count);
+        /*        Debug.Log(tree.Count);
 
-        foreach (List<Actions> l in tree)
-        {
-            foreach (Actions a in l)
-            {
-                Debug.Log(a.actionName);
-            }
-            Debug.Log("============");
-        }*/
+                foreach (List<Actions> l in tree)
+                {
+                    foreach (Actions a in l)
+                    {
+                        Debug.Log(a.actionName);
+                    }
+                    Debug.Log("============");
+                }*/
         /* ================== */
 
         Queue<Actions> queue = new Queue<Actions>();

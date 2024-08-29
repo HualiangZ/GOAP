@@ -3476,6 +3476,7 @@ GameObject:
   - component: {fileID: 977935334}
   - component: {fileID: 977935335}
   - component: {fileID: 977935336}
+  - component: {fileID: 977935337}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -3672,7 +3673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionName: Autumn Tree
-  cost: 2
+  cost: 3
   preConditions: []
   afterEffects:
   - key: Tree
@@ -3732,6 +3733,29 @@ MonoBehaviour:
   waitDuration: 3
   targetTag: 
   target: {fileID: 1143959581}
+  agent: {fileID: 0}
+--- !u!114 &977935337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977935324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3683264341eced4a978924e63c39843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Action
+  cost: 2
+  preConditions: []
+  afterEffects:
+  - key: Tree
+    value: 0
+  isRunning: 0
+  waitDuration: 2
+  targetTag: 
+  target: {fileID: 942973896}
   agent: {fileID: 0}
 --- !u!1001 &1105412926
 PrefabInstance:
