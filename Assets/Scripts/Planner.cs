@@ -69,7 +69,7 @@ public class Planner
         }
 
         var temp = Time.time;
-        List<Actions> cheapest = Dijkstra(tree);
+        List<Actions> cheapest = AStar(tree);
         Debug.Log("Time for MyExpensiveFunction: " + (Time.realtimeSinceStartup - temp).ToString("f6"));
 
 
