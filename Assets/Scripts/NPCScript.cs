@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using System.Linq;
+using System.IO;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.AI;
@@ -22,12 +23,16 @@ public class NPCScript : MonoBehaviour
     private Planner planner;
     bool ran = false;
 
+    string fileName = Application.dataPath + "/dataA.csv";
+    TextWriter tw;
+
     Goals g1 = new Goals("Fish", 1, true);
     Goals g2 = new Goals("Apple", 1, true);
     Goals g = new Goals("Dry", 1, true);
     // Start is called before the first frame update
     void Start()
     {
+       tw = new StreamWriter(fileName);
         rain = false;
         NPCStates = new States();
         agent = GetComponent<NavMeshAgent>();
@@ -47,8 +52,7 @@ public class NPCScript : MonoBehaviour
     }
     private void Update()
     {
-        
-        if(goals.Count == 0)
+        if (goals.Count == 0)
         {
             agent.SetDestination(waitingArea.transform.position);
         }
@@ -86,7 +90,16 @@ public class NPCScript : MonoBehaviour
                     break;
                 }
             }
+
+            if (planner.timer != null)
+            {
+                Debug.Log(planner.timer);
+                tw.WriteLine(planner.timer);
+            }
+
         }
+
+   
 
         if(actionQ != null && actionQ.Count == 0)
         {
@@ -104,6 +117,7 @@ public class NPCScript : MonoBehaviour
                     }
                 }
             }
+
             planner = null;
         }
 
@@ -128,6 +142,12 @@ public class NPCScript : MonoBehaviour
             }
         }
 
+    }
+
+    private void OnApplicationQuit()
+    {
+        tw.Flush();
+        tw.Close();
     }
 
     private void DecreaseHunger()

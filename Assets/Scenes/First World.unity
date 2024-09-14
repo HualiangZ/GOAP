@@ -3667,7 +3667,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977935324}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4780571148f46304e92f10f38c43e4c1, type: 3}
   m_Name: 
@@ -3695,7 +3695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071b9e04e3a595c4eb7568725b4edb35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: Action
+  actionName: build
   cost: 1
   preConditions:
   - key: Tree
@@ -3704,7 +3704,7 @@ MonoBehaviour:
   - key: Shelter
     value: 1
   isRunning: 0
-  waitDuration: 3
+  waitDuration: 0
   targetTag: 
   target: {fileID: 1143959581}
   agent: {fileID: 0}
@@ -3721,7 +3721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d688deb07f2c7104bb095d941c677981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: Action
+  actionName: Shelter
   cost: 1
   preConditions:
   - key: Shelter
@@ -3746,14 +3746,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3683264341eced4a978924e63c39843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: Action
-  cost: 2
+  actionName: Tree
+  cost: 1
   preConditions: []
   afterEffects:
   - key: Tree
     value: 0
   isRunning: 0
-  waitDuration: 2
+  waitDuration: 0
   targetTag: 
   target: {fileID: 942973896}
   agent: {fileID: 0}

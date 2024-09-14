@@ -6,6 +6,8 @@ using System.Runtime.CompilerServices;
 using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.IO;
+using UnityEngine.Rendering;
 
 public class Node
 {
@@ -13,7 +15,6 @@ public class Node
     public float cost;
     public Dictionary<string, int> state;
     public Actions action;
-
  
     public Node (Node parent, float cost, Dictionary<string, int> state, Actions action)
     {
@@ -25,7 +26,8 @@ public class Node
 }
 public class Planner
 {
-    
+
+    public string timer;
     public Queue<Actions> plan(List<Actions> actions, Dictionary<string, int> goal, State state)
     {
         List<Actions> useableAction = new List<Actions>();
@@ -70,20 +72,20 @@ public class Planner
 
         var temp = Time.time;
         List<Actions> cheapest = AStar(tree);
-        Debug.Log("Time for MyExpensiveFunction: " + (Time.realtimeSinceStartup - temp).ToString("f6"));
+        timer = (Time.realtimeSinceStartup - temp).ToString("f6");
 
 
         /* ==== testing code ==== */
-        /*        Debug.Log(tree.Count);
+/*        Debug.Log(tree.Count);
 
-                foreach (List<Actions> l in tree)
-                {
-                    foreach (Actions a in l)
-                    {
-                        Debug.Log(a.actionName);
-                    }
-                    Debug.Log("============");
-                }*/
+        foreach (List<Actions> l in tree)
+        {
+            foreach (Actions a in l)
+            {
+                Debug.Log(a.actionName);
+            }
+            Debug.Log("============");
+        }*/
         /* ================== */
 
         Queue<Actions> queue = new Queue<Actions>();
@@ -195,7 +197,7 @@ public class Planner
     private List<Actions> AStar(List<List<Actions>> tree)
     {
         List<Actions> cheapest = null;
-        List<List<int>> CLOSED = new List<List<int>>();
+       // List<List<int>> CLOSED = new List<List<int>>();
         float currentCheapest = Mathf.Infinity;
 
         for(int i=0; i < tree.Count; i++)
@@ -207,20 +209,21 @@ public class Planner
                 item.Add(i);
                 item.Add(j);
                 //Debug.Log(i + "," +j);
-                if (!CLOSED.Contains(item))
+                List<Actions> node = tree[i];
+                float h = (tree[i].Count - j);
+                cost += node[j].cost + h;
+
+
+                if (cost > currentCheapest)
                 {
-                    List<Actions> node = tree[i];
-                    float h = Mathf.Sqrt((tree[i].Count - j ) ^ 2 + (tree.Count - i ) ^ 2);
-                    cost += node[j].cost + h;
-
-
-                    if (cost > currentCheapest)
-                    {
-                        //Debug.Log("Break");
-                        break;
-                    }
-                    CLOSED.Add(item);
+                    //Debug.Log("Break");
+                    break;
                 }
+                /*                if (!CLOSED.Contains(item))
+                                {
+
+                                    CLOSED.Add(item);
+                                }*/
                 else
                 {
                     //Debug.Log("skipped");
@@ -233,6 +236,7 @@ public class Planner
             if (cost < currentCheapest)
             {
                 //Debug.Log("cheapest: " + currentCheapest + ", " + cost + ", " + i);
+                //Debug.Log(cost + " < " + currentCheapest);
                 currentCheapest = cost;
                 cheapest = tree[i];
             }

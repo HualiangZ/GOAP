@@ -22,7 +22,11 @@ public class States
 
     public void AddState(string s, int i)
     {
-        state.Add(s, i);
+        if(!state.ContainsKey(s))
+        {
+            state.Add(s, i);
+        }
+       
     }
 
     public bool HasState(string s)
