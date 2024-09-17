@@ -34,6 +34,6 @@ public class UIScript : MonoBehaviour
                 rainBool.text = "False";
             }
         }
-        
+
     }
 }

@@ -23,7 +23,7 @@ public class NPCScript : MonoBehaviour
     private Planner planner;
     bool ran = false;
 
-    string fileName = Application.dataPath + "/dataA.csv";
+    string fileName = Application.dataPath + "/d.csv";
     TextWriter tw;
 
     Goals g1 = new Goals("Fish", 1, true);
@@ -93,7 +93,7 @@ public class NPCScript : MonoBehaviour
 
             if (planner.timer != null)
             {
-                Debug.Log(planner.timer);
+                //Debug.Log(planner.timer);
                 tw.WriteLine(planner.timer);
             }
 

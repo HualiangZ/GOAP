@@ -76,8 +76,8 @@ public class Planner
 
 
         /* ==== testing code ==== */
-/*        Debug.Log(tree.Count);
-
+        Debug.Log(tree.Count + " AStar Thirst Plans Generated");
+/*
         foreach (List<Actions> l in tree)
         {
             foreach (Actions a in l)
@@ -92,7 +92,7 @@ public class Planner
 
         foreach (Actions a in cheapest)
         {
-            //Debug.Log(a.actionName + ", " + a.cost);  
+            Debug.Log(a.actionName);  
             queue.Enqueue(a);
         }
 
