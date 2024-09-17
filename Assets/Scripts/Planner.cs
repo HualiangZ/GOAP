@@ -71,12 +71,12 @@ public class Planner
         }
 
         var temp = Time.time;
-        List<Actions> cheapest = AStar(tree);
+        List<Actions> cheapest = Dijkstra(tree);
         timer = (Time.realtimeSinceStartup - temp).ToString("f6");
 
 
         /* ==== testing code ==== */
-        Debug.Log(tree.Count + " AStar Thirst Plans Generated");
+        Debug.Log(tree.Count + " Dijkstra Dry off Plans Generated");
 /*
         foreach (List<Actions> l in tree)
         {
